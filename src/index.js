@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
 
-import Order from './components/Order';
+import Order2 from './components/Order2';
 
-ReactDOM.render(<Order/>,document.querySelector('#root'));
+ReactDOM.render(<Order2/>,document.querySelector('#root'));

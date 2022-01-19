@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
 
+
 import '../css/order.css';
 import '../css/popup.css';
 import Popup from './Popup';
@@ -9,6 +10,11 @@ const Order = () => {
     const [items, setItems] = useState([]);
     const [inputItem, setInputItem] = useState('');
     const [seen, setSeen] = useState(false);
+
+//     React.useEffect(()=>{
+//   console.log('component is updated');
+//     });
+    // blank ,[] ,[items]
 
     const changeInput = (e) => {
         setInputItem(e.target.value);
@@ -44,8 +50,8 @@ const Order = () => {
 
     const calculateTotal = () => {
         return items.reduce((init, curr) => {
-            if(curr.isSelected){
-            init = init + curr.quantity;
+            if (curr.isSelected) {
+                init = init + curr.quantity;
             }
             return init;
         }, 0);
@@ -76,6 +82,7 @@ const Order = () => {
                             </>
                         )}
                     </div>
+                    {/* <Label itemInfo={item}/> */}
                     <div className="quantity">
                         <button><FontAwesomeIcon icon={faChevronLeft} onClick={() => decreaseQuantiy(index)} /></button>
                         <span>{quantity}</span>
@@ -87,11 +94,11 @@ const Order = () => {
             <div className="total">Total : {calculateTotal()}</div>
             <div className="pay" onClick={togglePopUp}>Pay</div>
             {seen && <Popup
-      content={<>
-        <h2 style={{color:'black'}}>Pay ${calculateTotal()}</h2>
-      </>}
-      handleClose={togglePopUp}
-    />}
+                content={<>
+                    <h2 style={{ color: 'black' }}>Pay ${calculateTotal()}</h2>
+                </>}
+                handleClose={togglePopUp}
+            />}
 
         </div></div>)
 }
